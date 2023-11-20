@@ -110,6 +110,8 @@ Abaixo temos um diagrama para ilustrar as camadas e sua composição:
 - Presentation e infrastructure estão no mesmo degrau da hierarquia de camadas, mas não possuem dependência entre si
 
 
+<hr>
+
 ### Instalação e execução
 
 #### Tecnologias utilizadas
@@ -143,6 +145,8 @@ baab06e18603   meli-meli_app     "java -jar build/lib…"   28 seconds ago   Up 
 05ed23ad2123   postgres:latest   "docker-entrypoint.s…"   28 seconds ago   Up 27 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgres-db
 ```
 
+<hr>
+
 ### Usando o projeto
 
 Se tudo deu certo, podemos acessar o navegador no seguinte endereço:
@@ -172,8 +176,9 @@ Apesar de parecer um projeto de uma API simples, há complexidades bem interessa
 como escolher o tipo Date adequado para a realização dos cálculos de idade mínima requerida e, principalmente, a 
 atualização de dados parcial.
 
+<hr>
 
 ### ToDos / Ideias e Melhorias para o projeto
-- Adicionar mais testes à aplicação como um todo, principalmente teste unitários para validar os casos de uso e de integração para validar os contratos da API.
-- Melhorar a coleta e a visualização de logs da aplicação, talvez adicionando alguma ferramenta externa para permitir um melhor monitoramento de seu desempenho
-- Atualmente na listagem de Usuários, é possível fazer busca por texto no campo nome de forma parcial. Essa restrição é feita diretamente no banco de dados, mas seria ideal usar um recurso mais apropriado para buscas por texto parcial, como um Elasticsearch, por exemplo.
+- [ ] Adicionar mais testes à aplicação como um todo, principalmente teste unitários para validar os casos de uso e de integração para validar os contratos da API.
+- [ ] Melhorar a coleta e a visualização de logs da aplicação, talvez adicionando alguma ferramenta externa para permitir um melhor monitoramento de seu desempenho
+- [ ] Atualmente na listagem de Usuários, é possível fazer busca por texto no campo nome de forma parcial. Essa restrição é feita diretamente no banco de dados, mas seria ideal usar um recurso mais apropriado para buscas por texto parcial, como um Elasticsearch, por exemplo.
