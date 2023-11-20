@@ -43,8 +43,7 @@ A API atualmente contempla as seguintes funcionalidades:
 
 ### Requisitos não funcionais
 
-- Pode ser executada através de containers Docker
-- Faz uso de um banco de dados relacional para a persistência de seus dados que também pode ser executada via container Docker.
+- Faz uso de um banco de dados relacional para a persistência de dados. Pode ser usado via container Docker.
 
 <hr>
 
