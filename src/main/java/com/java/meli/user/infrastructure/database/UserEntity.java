@@ -4,7 +4,7 @@ import com.java.meli.core.utils.DateUtils;
 import com.java.meli.user.domain.User;
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 
@@ -36,7 +36,7 @@ public class UserEntity implements User {
     public UserEntity() {
     }
 
-    public UserEntity(String name, String cpf, Date birth, String email) {
+    public UserEntity(String name, String cpf, LocalDate birth, String email) {
         this.name = name;
         this.cpf = cpf;
         this.birth = this.convertToSQLDate(birth);
@@ -70,12 +70,12 @@ public class UserEntity implements User {
         this.cpf = cpf;
     }
 
-    public Date getBirth() {
-        return birth;
+    public LocalDate getBirth() {
+        return DateUtils.convertSQLDatetoLocalDate(birth);
     }
 
     @Override
-    public void setBirth(Date birth) {
+    public void setBirth(LocalDate birth) {
         this.birth = this.convertToSQLDate(birth);
     }
 
@@ -95,7 +95,7 @@ public class UserEntity implements User {
         }
     }
 
-    private java.sql.Date convertToSQLDate(Date originalDate) {
+    private java.sql.Date convertToSQLDate(LocalDate originalDate) {
         return DateUtils.convertToSQLDate(originalDate);
     }
 }

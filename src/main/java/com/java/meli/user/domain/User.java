@@ -1,6 +1,6 @@
 package com.java.meli.user.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 
@@ -16,9 +16,9 @@ public interface User {
 
     void setCpf(String cpf);
 
-    Date getBirth();
+    LocalDate getBirth();
 
-    void setBirth(Date birth);
+    void setBirth(LocalDate birth);
 
     String getEmail();
 

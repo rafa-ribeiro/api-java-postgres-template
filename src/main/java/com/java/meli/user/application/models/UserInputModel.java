@@ -1,6 +1,8 @@
 package com.java.meli.user.application.models;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
 
 
 public class UserInputModel {
@@ -9,14 +11,15 @@ public class UserInputModel {
 
     private String cpf;
 
-    private Date birth;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate birth;
 
     private String email;
 
     public UserInputModel() {
     }
 
-    public UserInputModel(String name, String cpf, Date birth, String email) {
+    public UserInputModel(String name, String cpf, LocalDate birth, String email) {
         this.name = name;
         this.cpf = cpf;
         this.birth = birth;
@@ -39,11 +42,11 @@ public class UserInputModel {
         this.cpf = cpf;
     }
 
-    public Date getBirth() {
+    public LocalDate getBirth() {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(LocalDate birth) {
         this.birth = birth;
     }
 
