@@ -47,15 +47,6 @@ A API atualmente contempla as seguintes funcionalidades:
 
 <hr>
 
-### Tech Stack
-
-- Java 17
-- Gradle 7.4
-- Spring Boot 3.1.5
-- Postgres rodando em contêiner Docker 
-
-<hr>
-
 ### Arquitetura do projeto
 
 Para esse projeto a ideia foi aplicar alguns dos princípios da Clean Architecture, visando uma aplicação separada em camadas e cada uma delas com um escopo e impactos bem definidos, diminuindo o acoplamento de código, porém tentando manter a simplicidade de uso e legibilidade. Assim, para se tentar chegar nesse resultado de uma arquitetura robusta, mas ainda de fácil entendimento, foi aplicado alguns conceitos do SOLID, sendo os principais:
@@ -117,3 +108,72 @@ Abaixo temos um diagrama para ilustrar as camadas e sua composição:
 - O diagrama mostra que quanto mais internos seus componentes são, menos dependências eles possuem, ou seja, a camada mais acima não depende de ninguém e conforme vamos descendo as camadas, essas camadas só podem depender das que estão acima.
 - É comum vermos abstrações (classes abstratas ou interfaces) numa camada superior e vermos sua implementação estar numa camada inferior, pois é justamente a abstração que nos permite fazer a comunicação entre as camadas
 - Presentation e infrastructure estão no mesmo degrau da hierarquia de camadas, mas não possuem dependência entre si
+
+
+### Instalação e execução
+
+#### Tecnologias utilizadas
+
+- Java 17
+- Gradle 7.4
+- Spring Boot 3.1.5
+- Docker com Docker Compose
+- Postgres (rodando em contêiner Docker)
+
+<hr>
+
+#### Execução
+
+Para a execução, basta fazer o clone do projeto, acessar o diretório em que o projeto foi clonado ou baixado e executar 
+o seguinte comando no terminal:
+
+
+```bash
+docker compose -f compose-uat.yaml up
+```
+
+Após a execução, podemos verificar se os contêineres estão em execução através do comando **docker ps**:
+
+O resultado deve ser algo assim:
+
+```bash
+➜  meli git:(main) ✗ docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+baab06e18603   meli-meli_app     "java -jar build/lib…"   28 seconds ago   Up 27 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   meli_app
+05ed23ad2123   postgres:latest   "docker-entrypoint.s…"   28 seconds ago   Up 27 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgres-db
+```
+
+### Usando o projeto
+
+Se tudo deu certo, podemos acessar o navegador no seguinte endereço:
+
+```
+http://localhost:8080/docs
+```
+
+Através dessa interface do OpenAPI é possível verificar os endpoints disponíveis e testar as execuções de cada um deles. 
+
+
+#### Considerações importantes da API:
+
+- As datas trafegadas nos endpoints devem estar no formato: yyyy-MM-dd
+- O CPF não deve ser informado com a formatação. A API retornará uma mensagem e status de erro informando ao usuário para se certificar que o CPF não esteja formatado
+
+OBS.: Tentei documentar todas essas especificidades direto no OpenAPI, mas na versão utilizada pela aplicação, o RequestBody, por exemplo, ainda não aceita uma descrição (só encontrei em versões mais novas).
+
+
+#### Minhas considerações do projeto:
+
+O projeto foi bem bacana de ser desenvolvido ainda mais que estava há tempo sem codificar no ecossistema Java/Spring, 
+até por conta disso optei por focar mais no desenho da arquitetura proposta e nas relações entre as camadas do sistema
+do que em otimizações da linguagem em si. Acredito que há muitos pontos de melhoria no projeto e novas características 
+da linguagem que posso não ter usado tanto quanto deveria, mas a experiência foi muito legal. 
+Apesar de parecer um projeto de uma API simples, há complexidades bem interessantes 
+como escolher o tipo Date adequado para a realização dos cálculos de idade mínima requerida e, principalmente, a 
+atualização de dados parcial.
+
+
+### ToDos / Ideias e Melhorias para o projeto
+- Adicionar mais testes à aplicação como um todo, principalmente teste unitários para validar os casos de uso e de integração para validar os contratos da API.
+- Melhorar a coleta e a visualização de logs da aplicação, talvez adicionando alguma ferramenta externa para permitir um melhor monitoramento de seu desempenho
+- Atualmente na listagem de Usuários, é possível fazer busca por texto no campo nome de forma parcial. Essa restrição é feita diretamente no banco de dados, mas seria ideal usar um recurso mais apropriado para buscas por texto parcial, como um Elasticsearch, por exemplo.
