@@ -103,9 +103,18 @@ Nele há 2 pacotes principais:
 - O pacote **core** que contém aspectos técnicos importantes para fazer a aplicação funcionar da forma correta, mas que não possui conhecimentos específicos de negócio. Nele estão códigos/contratos mais genéricos e de utilidades que podem ser compartilhados por outros módulos da aplicação.
 - O pacote **user** que tem por objeto ter todo o conhecimento necessário da aplicação para gerenciar o recurso Usuário, dessa forma centralizando qualquer questão relacionada ao usuário nesse pacote, desde a disponibilização da API e suas rotas, a aplicação das regras de negócio requeridas para se criar e manter um usuário, até a manipulação dos dados do usuário no banco de dados.
 
-O pacote user é onde as camadas da Clean Architecture são colocadas em prática ficando assim:
+O pacote user é onde as camadas da Clean Architecture são colocadas em prática dessa forma:
 
 - **domain** é onde está o conhecimento do que é um User para a aplicação, tenta responder a pergunta "o que é?"
 - **application** é onde está a execução das regras de negócio, interagindo com as demais camadas através de contratos definidos nessa mesma camada ou na camada de domínio, tenta responder a pergunta "como?"
 - **infrastructure** é a camada que detém o conhecimento das tecnologias envolvidas no processo do software. Nesse projeto, por exemplo, é a camada que conhece o banco de dados, que sabe como se comunicar com o banco de dados e como efetuar uma consulta.
 - **presentation** é a camada que apresenta o software para o mundo externo, um ponto de acesso, nesse projeto, isso é feito através da API, mas poderia se ter outros pacotes que poderiam criar novas portas de acesso às regras de negócio de Usuário.
+
+
+Abaixo temos um diagrama para ilustrar as camadas e sua composição:
+
+![Diagrama ilustrando as camadas do projeto e suas fronteiras](/doc/images/api_onion_diagram.jpg "Diagrama de camadas do projeto")
+
+- O diagrama mostra que quanto mais internos seus componentes são, menos dependências eles possuem, ou seja, a camada mais acima não depende de ninguém e conforme vamos descendo as camadas, essas camadas só podem depender das que estão acima.
+- É comum vermos abstrações (classes abstratas ou interfaces) numa camada superior e vermos sua implementação estar numa camada inferior, pois é justamente a abstração que nos permite fazer a comunicação entre as camadas
+- Presentation e infrastructure estão no mesmo degrau da hierarquia de camadas, mas não possuem dependência entre si
