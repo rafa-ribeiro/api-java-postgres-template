@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: postgres-db
+    environment:
+      - 'POSTGRES_DB=mydatabase'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=myuser'
+    ports:
+      - '5432:5432'
+    networks:
+      - app-network
+
+  meli_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: meli_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
