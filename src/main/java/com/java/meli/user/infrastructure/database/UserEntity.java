@@ -85,7 +85,7 @@ public class UserEntity implements User {
 
     @Override
     public void setEmail(String email) {
-
+        this.email = email;
     }
 
     @PrePersist

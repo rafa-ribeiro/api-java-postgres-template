@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUserByUuid(UUID uuid, UserDTO userDTO) {
+    public User updateUserByUuid(UUID uuid, UserDTO userDTO) throws DataIntegrityViolationException {
         return this.userDAO.update(uuid, userDTO);
     }
 }

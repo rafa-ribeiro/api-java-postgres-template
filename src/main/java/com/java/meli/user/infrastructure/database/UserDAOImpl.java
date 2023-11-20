@@ -5,6 +5,7 @@ import com.java.meli.user.application.models.UserDTO;
 import com.java.meli.user.application.models.UserInputModel;
 import com.java.meli.user.domain.User;
 import com.java.meli.user.infrastructure.database.mapper.UserMapper;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -48,7 +49,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User update(UUID uuid, UserDTO userDTO) {
+    public User update(UUID uuid, UserDTO userDTO) throws DataIntegrityViolationException {
         UserEntity user = this.userRepository.getByUuid(uuid);
         this.userMapper.update(userDTO, user);
         return this.userRepository.save(user);

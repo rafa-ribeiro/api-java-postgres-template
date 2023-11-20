@@ -3,6 +3,7 @@ package com.java.meli.user.application.dao;
 import com.java.meli.user.application.models.UserDTO;
 import com.java.meli.user.application.models.UserInputModel;
 import com.java.meli.user.domain.User;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.UUID;
 
@@ -14,5 +15,5 @@ public interface UserDAO {
 
     User getByUuid(UUID uuid);
 
-    User update(UUID uuid, UserDTO userDTO);
+    User update(UUID uuid, UserDTO userDTO) throws DataIntegrityViolationException;
 }

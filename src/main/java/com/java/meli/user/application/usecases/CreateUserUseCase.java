@@ -18,7 +18,7 @@ import java.text.MessageFormat;
 @Component
 public class CreateUserUseCase {
 
-    private static final int MINIMUM_REQUIRED_AGE = 18;
+    public static final int MINIMUM_REQUIRED_AGE = 18;
 
     private final UserService userService;
 

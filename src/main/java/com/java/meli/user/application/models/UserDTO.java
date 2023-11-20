@@ -2,7 +2,7 @@ package com.java.meli.user.application.models;
 
 import org.openapitools.jackson.nullable.JsonNullable;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class UserDTO {
@@ -11,14 +11,14 @@ public class UserDTO {
 
     private JsonNullable<String> cpf;
 
-    private JsonNullable<Date> birth;
+    private JsonNullable<LocalDate> birth;
 
     private JsonNullable<String> email;
 
     public UserDTO() {
     }
 
-    public UserDTO(JsonNullable<String> name, JsonNullable<String> cpf, JsonNullable<Date> birth, JsonNullable<String> email) {
+    public UserDTO(JsonNullable<String> name, JsonNullable<String> cpf, JsonNullable<LocalDate> birth, JsonNullable<String> email) {
         this.name = name;
         this.cpf = cpf;
         this.birth = birth;
@@ -41,11 +41,11 @@ public class UserDTO {
         this.cpf = cpf;
     }
 
-    public JsonNullable<Date> getBirth() {
+    public JsonNullable<LocalDate> getBirth() {
         return birth;
     }
 
-    public void setBirth(JsonNullable<Date> birth) {
+    public void setBirth(JsonNullable<LocalDate> birth) {
         this.birth = birth;
     }
 
