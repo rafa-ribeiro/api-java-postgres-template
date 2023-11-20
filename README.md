@@ -24,7 +24,7 @@ A API atualmente contempla as seguintes funcionalidades:
    - [x] Valida que somente usuários acima de 18 anos possam ser inputados no sistema. Essa regra se baseia no atributo data de nascimento do usuário.
    - [x] Valida que o email do usuário é único.
    - [x] Valida que o CPF do usuário é único.
-   - [x] Valida que o CPF fornecido pelo usuário é um CPF válido que atende ao cálculo de verificação de dígitos. Explicação do algoritmo utilizado como base para implementação em: LINK DO MACORATTI
+   - [x] Valida que o CPF fornecido pelo usuário é um CPF válido que atende ao cálculo de verificação de dígitos. Explicação do algoritmo utilizado como base para implementação em: [Algoritmo CPF](https://www.macoratti.net/alg_cpf.htm)
 
    
 2. **Para a atualização completa ou parcial**:
