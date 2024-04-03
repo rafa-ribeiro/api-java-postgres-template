@@ -1,7 +1,3 @@
-# MeliChallenge
-
-MeliChallenge é o projeto resultado do desafio técnico do Mercado Livre para atuação como Backend Engineer.
-
 <hr>
 
 ## O projeto
@@ -177,8 +173,3 @@ como escolher o tipo Date adequado para a realização dos cálculos de idade m�
 atualização de dados parcial.
 
 <hr>
-
-### ToDos / Ideias e Melhorias para o projeto
-- [ ] Adicionar mais testes à aplicação como um todo, principalmente teste unitários para validar os casos de uso e de integração para validar os contratos da API.
-- [ ] Melhorar a coleta e a visualização de logs da aplicação, talvez adicionando alguma ferramenta externa para permitir um melhor monitoramento de seu desempenho
-- [ ] Atualmente na listagem de Usuários, é possível fazer busca por texto no campo nome de forma parcial. Essa restrição é feita diretamente no banco de dados, mas seria ideal usar um recurso mais apropriado para buscas por texto parcial, como um Elasticsearch, por exemplo.
